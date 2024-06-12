@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ininoutout_flutter/constants/icons.dart';
-import 'package:ininoutout_flutter/models/earning/earning.dart';
-import 'package:ininoutout_flutter/models/earning/earning_category.dart';
-import 'package:ininoutout_flutter/models/expense/expanse.dart';
-import 'package:ininoutout_flutter/models/expense/expense_category.dart';
+import 'package:ininoutout_flutter/core/constants/icons.dart';
+import 'package:ininoutout_flutter/core/models/earning/earning.dart';
+import 'package:ininoutout_flutter/core/models/earning/earning_category.dart';
+import 'package:ininoutout_flutter/core/models/expense/expanse.dart';
+import 'package:ininoutout_flutter/core/models/expense/expense_category.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -17,9 +17,9 @@ class DatabaseProvider with ChangeNotifier {
 
   // in-app memory for holding the Expense categories temporarily
   List<EarningCategory> _earningCategories = [];
-  List<EarningCategory> get earningCategory => _earningCategories;
+  List<EarningCategory> get earningCategories => _earningCategories;
   List<ExpenseCategory> _expenseCategories = [];
-  List<ExpenseCategory> get expenseCategory => _expenseCategories;
+  List<ExpenseCategory> get expenseCategories => _expenseCategories;
 
   List<Earning> _earnings = [];
   List<Earning> get earnings {
@@ -242,7 +242,7 @@ class DatabaseProvider with ChangeNotifier {
 
         _earnings.add(file);
         notifyListeners();
-        var ex = findEarningCategory(ern.title);
+        var ex = findEarningCategory(ern.category);
 
         updateEarningCategory(
             ern.category, ex.entries + 1, ex.totalAmount + ern.amount);
@@ -270,7 +270,7 @@ class DatabaseProvider with ChangeNotifier {
 
         _expenses.add(file);
         notifyListeners();
-        var ex = findExpenseCategory(exp.title);
+        var ex = findExpenseCategory(exp.category);
 
         updateExpenseCategory(
             exp.category, ex.entries + 1, ex.totalAmount + exp.amount);
@@ -456,4 +456,8 @@ class DatabaseProvider with ChangeNotifier {
     return data;
   }
   // =========================================================================================== END EARNING DATA
+
+  // =========================================================================================== CHART DATA
+
+  // =========================================================================================== END CHART DATA
 }

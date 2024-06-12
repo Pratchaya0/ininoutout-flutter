@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:ininoutout_flutter/constants/icons.dart';
+import 'package:ininoutout_flutter/core/constants/icons.dart';
 
-class ExpenseCategory {
+class EarningCategory {
   final String title; // the title of the category
   int entries =
-      0; // how many expenses are in this category. it will change overtime
-  double totalAmount = 0.0; // total amount of expenses in this category
+      0; // how many Earnings are in this category. it will change overtime
+  double totalAmount = 0.0; // total amount of Earnings in this category
   final IconData icon; // we will define some constant icons.
 
-  ExpenseCategory({
+  EarningCategory({
     required this.title,
     required this.entries,
     required this.totalAmount,
@@ -26,9 +26,9 @@ class ExpenseCategory {
       };
 
   // when we retrieve the data from the database it will be a 'Map'.
-  // for our app to understand the data, we need to convert it back to a 'Expense Category'
-  factory ExpenseCategory.fromString(Map<String, dynamic> value) =>
-      ExpenseCategory(
+  // for our app to understand the data, we need to convert it back to a 'Earning Category'
+  factory EarningCategory.fromString(Map<String, dynamic> value) =>
+      EarningCategory(
         title: value['title'],
         entries: value['entries'],
         totalAmount: double.parse(value['totalAmount']),
