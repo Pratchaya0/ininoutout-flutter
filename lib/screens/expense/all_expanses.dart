@@ -13,7 +13,10 @@ class _AllExpansesState extends State<AllExpanses> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("รายจ่ายทั้งหมด")),
+      appBar: AppBar(
+        title: const Text("รายจ่ายทั้งหมด",
+            style: TextStyle(fontWeight: FontWeight.bold)),
+      ),
       body: const AllExpensesFetcher(),
     );
   }

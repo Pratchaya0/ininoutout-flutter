@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
+import 'package:ininoutout_flutter/screens/earning/all_earning.dart';
+import 'package:ininoutout_flutter/screens/earning/earning_category_screen.dart';
 import 'package:ininoutout_flutter/screens/earning/earning_screen.dart';
 import 'package:ininoutout_flutter/screens/expense/all_expanses.dart';
 import 'package:ininoutout_flutter/screens/expense/expense_category_screen.dart';
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'IninOutout',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
         textTheme: GoogleFonts.notoSansThaiTextTheme(
           Theme.of(context).textTheme,
@@ -38,6 +40,8 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.name: (_) => const HomeScreen(),
         // Earning
+        EarningCategoryScreen.name: (_) => const EarningCategoryScreen(),
+        AllEarning.name: (_) => const AllEarning(),
         EarningScreen.name: (_) => const EarningScreen(),
 
         // Expense

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ininoutout_flutter/screens/earning/earning_category_screen.dart';
 import 'package:ininoutout_flutter/screens/earning/earning_screen.dart';
 import 'package:ininoutout_flutter/screens/expense/expense_category_screen.dart';
 import 'package:ininoutout_flutter/screens/expense/expense_screen.dart';
@@ -16,7 +17,7 @@ class InOutButton extends StatelessWidget {
           Expanded(
             child: OutlinedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(EarningScreen.name);
+                Navigator.of(context).pushNamed(EarningCategoryScreen.name);
               },
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Colors.green),
