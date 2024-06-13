@@ -16,7 +16,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
   final _title = TextEditingController();
   final _amount = TextEditingController();
   DateTime? _date;
-  String _initialValue = 'Other';
+  String _initialValue = 'ยังไม่ได้เลือก';
 
   _pickDate() async {
     DateTime? pickedDate = await showDatePicker(
@@ -45,7 +45,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
             TextField(
               controller: _title,
               decoration: const InputDecoration(
-                labelText: 'Title of expense',
+                labelText: 'หัวข้อรายจ่าย',
               ),
             ),
             const SizedBox(height: 20.0),
@@ -53,7 +53,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
               controller: _amount,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
-                labelText: 'Amount 0f expense',
+                labelText: 'จำนวนเงิน',
               ),
             ),
             const SizedBox(height: 20.0),
@@ -63,8 +63,8 @@ class _ExpenseFormState extends State<ExpenseForm> {
               children: [
                 Expanded(
                   child: Text(_date != null
-                      ? DateFormat('MMMM dd, yyyy').format(_date!)
-                      : 'Select Date'),
+                      ? DateFormat('dd MMMM yyyy', 'th').format(_date!)
+                      : 'เลือกวันที่'),
                 ),
                 IconButton(
                   onPressed: () => _pickDate(),
@@ -79,7 +79,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
             Row(
               children: [
                 const Expanded(
-                  child: Text('Category'),
+                  child: Text('ประเภทของรายจ่าย'),
                 ),
                 Expanded(
                   child: DropdownButton(
@@ -120,7 +120,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
                 }
               },
               icon: const Icon(Icons.add),
-              label: const Text('Add Expense'),
+              label: const Text('บันทึกรายจ่าย'),
             ),
           ],
         ),

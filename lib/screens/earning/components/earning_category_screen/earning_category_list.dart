@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
 import 'package:ininoutout_flutter/screens/earning/components/earning_category_screen/earning_category_card.dart';
-import 'package:ininoutout_flutter/screens/expense/components/category_screen/category_card.dart';
 import 'package:provider/provider.dart';
 
 class EarningCategoryList extends StatelessWidget {

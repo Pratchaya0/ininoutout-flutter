@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ininoutout_flutter/core/constants/colors.dart';
+import 'package:ininoutout_flutter/core/constants/font_size.dart';
 import 'package:ininoutout_flutter/screens/earning/components/all_earning_screen/all_earning_fetcher.dart';
 
 class AllEarning extends StatefulWidget {
@@ -14,9 +16,14 @@ class _AllEarningState extends State<AllEarning> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.primary,
         title: const Text(
           "รายรับทั้งหมด",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: AppFontSize.h1,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: const AllEarningFetcher(),

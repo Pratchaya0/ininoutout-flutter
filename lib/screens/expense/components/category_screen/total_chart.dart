@@ -29,7 +29,7 @@ class _TotalChartState extends State<TotalChart> {
                   alignment: Alignment.center,
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    'Total Expenses: ${NumberFormat.currency(locale: 'th_TH', symbol: '฿').format(total)}',
+                    'รายจ่ายรวมทั้งหมด : ${NumberFormat.currency(locale: 'th_TH', symbol: '฿').format(total)}',
                     textScaleFactor: 1.5,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,

@@ -18,7 +18,7 @@ class _EarningSearchState extends State<EarningSearch> {
         provider.searchText = value;
       },
       decoration: const InputDecoration(
-        labelText: 'Search Expenses',
+        labelText: 'ค้นหารายรับ',
       ),
     );
   }

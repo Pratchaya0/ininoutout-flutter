@@ -21,7 +21,7 @@ class CategoryCard extends StatelessWidget {
         child: Icon(category.icon),
       ),
       title: Text(category.title),
-      subtitle: Text('entries: ${category.entries}'),
+      subtitle: Text('จำนวน: ${category.entries} รายการ'),
       trailing: Text(NumberFormat.currency(locale: 'th_TH', symbol: '฿')
           .format(category.totalAmount)),
     );

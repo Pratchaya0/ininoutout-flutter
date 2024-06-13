@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ininoutout_flutter/core/constants/colors.dart';
+import 'package:ininoutout_flutter/core/constants/font_size.dart';
 import 'package:ininoutout_flutter/screens/expense/components/all_expenses_screen/all_expenses_fetcher.dart';
 
 class AllExpanses extends StatefulWidget {
@@ -14,8 +16,15 @@ class _AllExpansesState extends State<AllExpanses> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("รายจ่ายทั้งหมด",
-            style: TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: AppColors.primary,
+        title: const Text(
+          "รายจ่ายทั้งหมด",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: AppFontSize.h1,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: const AllExpensesFetcher(),
     );

@@ -46,7 +46,7 @@ class _EarningCategoryFetcherState extends State<EarningCategoryFetcher> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Earning',
+                        'ประเภทรายรับ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -55,7 +55,10 @@ class _EarningCategoryFetcherState extends State<EarningCategoryFetcher> {
                         onPressed: () {
                           Navigator.of(context).pushNamed(AllEarning.name);
                         },
-                        child: const Text("View All"),
+                        child: const Text(
+                          "ดูทั้งหมด",
+                          style: TextStyle(color: Colors.green),
+                        ),
                       ),
                     ],
                   ),

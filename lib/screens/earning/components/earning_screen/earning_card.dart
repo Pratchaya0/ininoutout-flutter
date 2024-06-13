@@ -17,6 +17,7 @@ class EarningCard extends StatelessWidget {
             context: context,
             builder: (_) => EarningCondirmBox(ern: ern),
           );
+          return null;
         },
         child: ListTile(
           leading: Padding(
@@ -24,7 +25,7 @@ class EarningCard extends StatelessWidget {
             child: Icon(icons[ern.category]),
           ),
           title: Text(ern.title),
-          subtitle: Text(DateFormat('MMMM dd, yyyy').format(ern.date)),
+          subtitle: Text(DateFormat('dd MMMM yyyy', 'th').format(ern.date)),
           trailing: Text(NumberFormat.currency(locale: 'th_TH', symbol: '฿')
               .format(ern.amount)),
         ));

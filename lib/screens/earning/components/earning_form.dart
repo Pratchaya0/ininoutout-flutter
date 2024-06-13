@@ -45,7 +45,7 @@ class _EarningFormState extends State<EarningForm> {
             TextField(
               controller: _title,
               decoration: const InputDecoration(
-                labelText: 'Title of earning',
+                labelText: 'หัวข้อรายรับ',
               ),
             ),
             const SizedBox(height: 20.0),
@@ -53,7 +53,7 @@ class _EarningFormState extends State<EarningForm> {
               controller: _amount,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
-                labelText: 'Amount of earning',
+                labelText: 'จำนวนเงิน',
               ),
             ),
             const SizedBox(height: 20.0),
@@ -63,8 +63,8 @@ class _EarningFormState extends State<EarningForm> {
               children: [
                 Expanded(
                   child: Text(_date != null
-                      ? DateFormat('MMMM dd, yyyy').format(_date!)
-                      : 'Select Date'),
+                      ? DateFormat('dd MMMM yyyy', 'th').format(_date!)
+                      : 'เลือกวันที่'),
                 ),
                 IconButton(
                   onPressed: () => _pickDate(),
@@ -78,7 +78,7 @@ class _EarningFormState extends State<EarningForm> {
             Row(
               children: [
                 const Expanded(
-                  child: Text('Category'),
+                  child: Text('ประเภทของรายรับ'),
                 ),
                 Expanded(
                   child: DropdownButton(
@@ -119,7 +119,7 @@ class _EarningFormState extends State<EarningForm> {
                 }
               },
               icon: const Icon(Icons.add),
-              label: const Text('Add Earning'),
+              label: const Text('บันทึกรายรับ'),
             )
           ],
         ),

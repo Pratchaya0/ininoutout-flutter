@@ -17,7 +17,7 @@ class EarningList extends StatelessWidget {
                 itemBuilder: (_, i) => EarningCard(ern: enList[i]),
               )
             : const Center(
-                child: Text('No Expenses Added'),
+                child: Text('ยังไม่มีรายรับ'),
               );
       },
     );

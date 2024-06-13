@@ -29,7 +29,8 @@ class _EarningTotalChartState extends State<EarningTotalChart> {
                   alignment: Alignment.center,
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    'Total Expenses: ${NumberFormat.currency(locale: 'th_TH', symbol: '฿').format(total)}',
+                    'รายรับรวมทั้งหมด : ${NumberFormat.currency(locale: 'th_TH', symbol: '฿').format(total)}',
+                    // ignore: deprecated_member_use
                     textScaleFactor: 1.5,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,

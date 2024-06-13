@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
-import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
 class ExpenseSearch extends StatefulWidget {
@@ -19,7 +18,7 @@ class _ExpenseSearchState extends State<ExpenseSearch> {
         provider.searchText = value;
       },
       decoration: const InputDecoration(
-        labelText: 'Search Expenses',
+        labelText: 'ค้นหารายจ่าย',
       ),
     );
   }

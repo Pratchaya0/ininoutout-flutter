@@ -17,7 +17,7 @@ class AllExpenseList extends StatelessWidget {
               itemCount: list.length,
               itemBuilder: (_, i) => ExpenseCard(exp: list[i]),
             )
-          : const Center(child: Text("No Entries Found"));
+          : const Center(child: Text("ยังไม่มีรายจ่าย"));
     });
   }
 }

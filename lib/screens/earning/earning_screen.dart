@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:ininoutout_flutter/core/constants/colors.dart';
+import 'package:ininoutout_flutter/core/constants/font_size.dart';
 import 'package:ininoutout_flutter/screens/earning/components/earning_screen/earning_fetcher.dart';
 
 class EarningScreen extends StatelessWidget {
@@ -11,7 +12,16 @@ class EarningScreen extends StatelessWidget {
     final category = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
-      appBar: AppBar(title: Text('รายรับ')),
+      appBar: AppBar(
+          backgroundColor: AppColors.primary,
+          title: const Text(
+            'รายรับ',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: AppFontSize.h1,
+              fontWeight: FontWeight.bold,
+            ),
+          )),
       body: EarningFetcher(category: category),
     );
   }

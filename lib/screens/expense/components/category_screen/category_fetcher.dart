@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ininoutout_flutter/core/constants/colors.dart';
+import 'package:ininoutout_flutter/core/constants/font_size.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
 import 'package:ininoutout_flutter/screens/expense/all_expanses.dart';
 import 'package:ininoutout_flutter/screens/expense/components/category_screen/category_list.dart';
@@ -46,16 +48,25 @@ class _CategoryFetcherState extends State<CategoryFetcher> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Expenses',
+                        'ประเภทรายจ่าย',
                         style: TextStyle(
+                          color: Colors.black,
+                          fontSize: AppFontSize.md,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed(AllExpanses.name);
-                          },
-                          child: const Text('View all'))
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(AllExpanses.name);
+                        },
+                        child: const Text(
+                          'ดูทั้งหมด',
+                          style: TextStyle(
+                              color: AppColors.orange,
+                              fontSize: AppFontSize.md,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ],
                   ),
                   const Expanded(child: CategoryList()),

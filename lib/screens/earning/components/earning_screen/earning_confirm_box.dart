@@ -11,7 +11,7 @@ class EarningCondirmBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<DatabaseProvider>(context, listen: false);
     return AlertDialog(
-      title: Text('Delete ${ern.title} ?'),
+      title: Text('ต้องการที่จะลบ \"${ern.title}\" ใช่หรือไม่?'),
       content: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -19,7 +19,7 @@ class EarningCondirmBox extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pop(false);
             },
-            child: const Text("Dont delete"),
+            child: const Text("ไม่ต้องการ"),
           ),
           const SizedBox(width: 5.0),
           ElevatedButton(
@@ -27,7 +27,7 @@ class EarningCondirmBox extends StatelessWidget {
               Navigator.of(context).pop(true);
               provider.deleteEarning(ern.id, ern.category, ern.amount);
             },
-            child: const Text('Delete'),
+            child: const Text('ลบ'),
           )
         ],
       ),

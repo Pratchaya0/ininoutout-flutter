@@ -17,6 +17,7 @@ class ExpenseCard extends StatelessWidget {
           context: context,
           builder: (_) => ConfirmBox(exp: exp),
         );
+        return null;
       },
       child: ListTile(
         leading: Padding(
@@ -24,7 +25,7 @@ class ExpenseCard extends StatelessWidget {
           child: Icon(icons[exp.category]),
         ),
         title: Text(exp.title),
-        subtitle: Text(DateFormat('MMMM dd, yyyy').format(exp.date)),
+        subtitle: Text(DateFormat('dd MMMM yyyy', 'th').format(exp.date)),
         trailing: Text(NumberFormat.currency(locale: 'th_TH', symbol: '฿')
             .format(exp.amount)),
       ),

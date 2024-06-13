@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:ininoutout_flutter/core/constants/colors.dart';
+import 'package:ininoutout_flutter/core/constants/font_size.dart';
 import 'package:ininoutout_flutter/screens/expense/components/category_screen/category_fetcher.dart';
 import 'package:ininoutout_flutter/screens/expense/components/expense_form.dart';
 
@@ -9,7 +12,18 @@ class ExpenseCategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Category')),
+      appBar: AppBar(
+        backgroundColor: AppColors.orange,
+        title: const Text(
+          'รายจ่าย',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: AppFontSize.h1,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        shadowColor: Colors.black,
+      ),
       body: const SafeArea(child: CategoryFetcher()),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -20,6 +34,7 @@ class ExpenseCategoryScreen extends StatelessWidget {
           );
         },
         child: const Icon(Icons.add),
+        backgroundColor: AppColors.orange,
       ),
     );
   }

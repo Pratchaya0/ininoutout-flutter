@@ -17,7 +17,7 @@ class AllEarningList extends StatelessWidget {
               itemCount: list.length,
               itemBuilder: (_, i) => EarningCard(ern: list[i]),
             )
-          : const Center(child: Text("No Entries Found"));
+          : const Center(child: Text("ยังไม่มีรายรับ"));
     });
   }
 }

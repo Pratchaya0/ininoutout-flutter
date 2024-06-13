@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ininoutout_flutter/core/constants/colors.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
 import 'package:ininoutout_flutter/screens/earning/all_earning.dart';
 import 'package:ininoutout_flutter/screens/earning/earning_category_screen.dart';
@@ -8,10 +9,12 @@ import 'package:ininoutout_flutter/screens/expense/all_expanses.dart';
 import 'package:ininoutout_flutter/screens/expense/expense_category_screen.dart';
 import 'package:ininoutout_flutter/screens/expense/expense_screen.dart';
 import 'package:ininoutout_flutter/screens/home_screen.dart';
-import 'package:path/path.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  initializeDateFormatting('th', null); // Initialize Thai locale
   runApp(
     ChangeNotifierProvider(
       create: (context) => DatabaseProvider(),
@@ -34,6 +37,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.notoSansThaiTextTheme(
           Theme.of(context).textTheme,
         ),
+        scaffoldBackgroundColor: Colors.white,
       ),
       // home: const HomeScreen(),
       initialRoute: HomeScreen.name,
