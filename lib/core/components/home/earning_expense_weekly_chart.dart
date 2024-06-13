@@ -5,21 +5,21 @@ import 'package:ininoutout_flutter/core/models/databese_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class EarningChart extends StatefulWidget {
-  final String category;
-  const EarningChart({super.key, required this.category});
+class EarningExpenseWeeklyChart extends StatefulWidget {
+  const EarningExpenseWeeklyChart({super.key});
 
   @override
-  State<EarningChart> createState() => _EarningChartState();
+  State<EarningExpenseWeeklyChart> createState() =>
+      _EarningExpenseWeeklyChartState();
 }
 
-class _EarningChartState extends State<EarningChart> {
+class _EarningExpenseWeeklyChartState extends State<EarningExpenseWeeklyChart> {
   @override
   Widget build(BuildContext context) {
     return Consumer<DatabaseProvider>(builder: (_, db, __) {
-      var maxY =
-          db.calculateEntriesAndAmountEarning(widget.category)['totalAmount'];
-      var list = db.calculateWeekEarning().reversed.toList();
+      var maxY = db.calculateEntriesAndAmountEarningAndExpanse()['maxAmount'];
+      var list = db.calculateWeekEarningAndExpense().reversed.toList();
+
       return Padding(
         padding: const EdgeInsets.only(top: 20.0),
         child: BarChart(
@@ -32,13 +32,22 @@ class _EarningChartState extends State<EarningChart> {
                   x: list.indexOf(e),
                   barRods: [
                     BarChartRodData(
-                      toY: e['amount'],
+                      toY: e['earningAmount'],
                       width: 20.0,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20),
                       ),
                       color: AppColors.primary,
+                    ),
+                    BarChartRodData(
+                      toY: e['expenseAmount'],
+                      width: 20.0,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                      color: AppColors.orange,
                     ),
                   ],
                 ),

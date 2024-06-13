@@ -31,8 +31,8 @@ class EarningCategoryScreen extends StatelessWidget {
             builder: (_) => const EarningForm(),
           );
         },
-        child: const Icon(Icons.add),
-        backgroundColor: Colors.green,
+        child: const Icon(Icons.add, color: Colors.black),
+        backgroundColor: AppColors.primary,
       ),
     );
   }

@@ -459,5 +459,62 @@ class DatabaseProvider with ChangeNotifier {
 
   // =========================================================================================== CHART DATA
 
+  Map<String, dynamic> calculateEntriesAndAmountEarningAndExpanse() {
+    double max = 0.0;
+    var listEarning = _earnings;
+    var listExpense = _expenses;
+
+    for (var i in listEarning) {
+      if (i.amount > max) {
+        max = i.amount + ((i.amount * 20) / 100);
+      }
+    }
+    for (var i in listExpense) {
+      if (i.amount > max) {
+        max = i.amount + ((i.amount * 20) / 100);
+      }
+    }
+
+    return {'earningEntries': listEarning.length, 'expenseEntries': listEarning.length, 'maxY': max};
+  }
+
+  //  Calculate weekly earning and expense
+  List<Map<String, dynamic>> calculateWeekEarningAndExpense() {
+    List<Map<String, dynamic>> data = [];
+
+    // we know that we need 7 entries
+    for (var i = 0; i < 7; i++) {
+      double totalEaring = 0.0; // 1 total for each entry
+      double totalExpense = 0.0; // 1 total for each entry
+      final weekDay = DateTime.now().subtract(Duration(days: i));
+
+      // Earning total
+      for (var j = 0; j < _earnings.length; j++) {
+        if (_earnings[j].date.year == weekDay.year &&
+            _earnings[j].date.month == weekDay.month &&
+            _earnings[j].date.day == weekDay.day) {
+          totalEaring += _earnings[j].amount;
+        }
+      }
+
+      // Expense total
+      for (var k = 0; k < _expenses.length; k++) {
+        if (_expenses[k].date.year == weekDay.year &&
+            _expenses[k].date.month == weekDay.month &&
+            _expenses[k].date.day == weekDay.day) {
+          totalExpense += _expenses[k].amount;
+        }
+      }
+
+      data.add({
+        'day': weekDay,
+        'earningAmount': totalEaring,
+        'expenseAmount': totalExpense
+      });
+    }
+
+    return data;
+  }
+
   // =========================================================================================== END CHART DATA
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ininoutout_flutter/core/components/in_out_button.dart';
+import 'package:flutter/widgets.dart';
+import 'package:ininoutout_flutter/core/components/home/earning_expense_fetcher.dart';
+import 'package:ininoutout_flutter/core/components/home/in_out_button.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = '/home_screen';
@@ -7,15 +9,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Container(
-              height: 250,
-              child: const InOutButton(),
+            Expanded(
+              child: EarningExpenseFetcher(),
             ),
-            const SizedBox(height: 15),
+            SizedBox(
+              height: 100,
+              child: InOutButton(),
+            ),
           ],
         ),
       ),

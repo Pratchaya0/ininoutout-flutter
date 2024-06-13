@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ininoutout_flutter/core/constants/font_size.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
 import 'package:ininoutout_flutter/screens/earning/all_earning.dart';
 import 'package:ininoutout_flutter/screens/earning/components/earning_category_screen/earning_category_list.dart';
@@ -48,6 +49,8 @@ class _EarningCategoryFetcherState extends State<EarningCategoryFetcher> {
                       const Text(
                         'ประเภทรายรับ',
                         style: TextStyle(
+                          color: Colors.black,
+                          fontSize: AppFontSize.md,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -57,7 +60,11 @@ class _EarningCategoryFetcherState extends State<EarningCategoryFetcher> {
                         },
                         child: const Text(
                           "ดูทั้งหมด",
-                          style: TextStyle(color: Colors.green),
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontSize: AppFontSize.md,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],

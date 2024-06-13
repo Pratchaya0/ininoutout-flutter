@@ -16,7 +16,7 @@ class _ExpenseFormState extends State<ExpenseForm> {
   final _title = TextEditingController();
   final _amount = TextEditingController();
   DateTime? _date;
-  String _initialValue = 'ยังไม่ได้เลือก';
+  String _initialValue = 'Other';
 
   _pickDate() async {
     DateTime? pickedDate = await showDatePicker(

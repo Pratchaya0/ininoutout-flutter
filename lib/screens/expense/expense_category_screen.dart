@@ -33,7 +33,7 @@ class ExpenseCategoryScreen extends StatelessWidget {
             builder: (_) => const ExpenseForm(),
           );
         },
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, color: Colors.black),
         backgroundColor: AppColors.orange,
       ),
     );
