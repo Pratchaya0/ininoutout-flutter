@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ininoutout_flutter/core/constants/colors.dart';
 import 'package:ininoutout_flutter/core/constants/font_size.dart';
-import 'package:ininoutout_flutter/screens/earning/earning_category_screen.dart';
-import 'package:ininoutout_flutter/screens/earning/earning_screen.dart';
-import 'package:ininoutout_flutter/screens/expense/expense_category_screen.dart';
-import 'package:ininoutout_flutter/screens/expense/expense_screen.dart';
+import 'package:ininoutout_flutter/screens/earning/earning_today_category_screen.dart';
+import 'package:ininoutout_flutter/screens/expense/expense_today_category_screen.dart';
 
 class InOutButton extends StatelessWidget {
   const InOutButton({super.key});
@@ -32,6 +30,12 @@ class InOutButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Image.asset(
+                    "assets/images/finance_3.png",
+                    width: 80,
+                    height: 80,
+                  ),
+                  // const SizedBox(width: 20),
                   Text(
                     'รับ',
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
@@ -44,7 +48,7 @@ class InOutButton extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 15),
+          const SizedBox(width: 5),
           Expanded(
             child: FilledButton(
               onPressed: () {
@@ -68,7 +72,13 @@ class InOutButton extends StatelessWidget {
                           fontSize: AppFontSize.h1,
                           fontWeight: FontWeight.bold,
                         ),
-                  )
+                  ),
+                  // const SizedBox(width: 20),
+                  Image.asset(
+                    "assets/images/finance_4.png",
+                    width: 80,
+                    height: 80,
+                  ),
                 ],
               ),
             ),

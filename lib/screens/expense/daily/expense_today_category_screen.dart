@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ininoutout_flutter/core/constants/colors.dart';
 import 'package:ininoutout_flutter/core/constants/font_size.dart';
-import 'package:ininoutout_flutter/screens/expense/components/category_screen/category_fetcher.dart';
+import 'package:ininoutout_flutter/screens/expense/components/today_category_screen/category_fetcher.dart';
 import 'package:ininoutout_flutter/screens/expense/components/expense_form.dart';
 
 class ExpenseCategoryScreen extends StatelessWidget {
@@ -15,7 +15,7 @@ class ExpenseCategoryScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.orange,
         title: const Text(
-          'รายจ่าย',
+          'รายจ่ายวันนี้',
           style: TextStyle(
             color: Colors.black,
             fontSize: AppFontSize.h1,

@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:ininoutout_flutter/core/constants/colors.dart';
 import 'package:ininoutout_flutter/core/constants/font_size.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
-import 'package:ininoutout_flutter/screens/expense/all_expanses.dart';
-import 'package:ininoutout_flutter/screens/expense/components/category_screen/category_list.dart';
-import 'package:ininoutout_flutter/screens/expense/components/category_screen/total_chart.dart';
+import 'package:ininoutout_flutter/screens/earning/all_today_earning.dart';
+import 'package:ininoutout_flutter/screens/earning/components/earning_today_category_screen/earning_category_list.dart';
+import 'package:ininoutout_flutter/screens/earning/components/earning_today_category_screen/earning_total_chart.dart';
 import 'package:provider/provider.dart';
 
-class CategoryFetcher extends StatefulWidget {
-  const CategoryFetcher({super.key});
+class EarningCategoryFetcher extends StatefulWidget {
+  const EarningCategoryFetcher({super.key});
 
   @override
-  State<CategoryFetcher> createState() => _CategoryFetcherState();
+  State<EarningCategoryFetcher> createState() => _EarningCategoryFetcherState();
 }
 
-class _CategoryFetcherState extends State<CategoryFetcher> {
+class _EarningCategoryFetcherState extends State<EarningCategoryFetcher> {
   late Future _categoryList;
 
   Future _getCategoryList() async {
     final provider = Provider.of<DatabaseProvider>(context, listen: false);
-    return await provider.fetchExpenseCategories();
+    return await provider.fetchEarningCategories();
   }
 
   @override
@@ -29,6 +28,7 @@ class _CategoryFetcherState extends State<CategoryFetcher> {
   }
 
   Widget build(BuildContext context) {
+    
     return FutureBuilder(
       future: _categoryList,
       builder: (_, snapshot) {
@@ -42,13 +42,13 @@ class _CategoryFetcherState extends State<CategoryFetcher> {
                 children: [
                   const SizedBox(
                     height: 250.0,
-                    child: TotalChart(),
+                    child: EarningTotalChart(),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'ประเภทรายจ่าย',
+                        'ประเภทรายรับ',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: AppFontSize.md,
@@ -57,19 +57,20 @@ class _CategoryFetcherState extends State<CategoryFetcher> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed(AllExpanses.name);
+                          Navigator.of(context).pushNamed(AllEarning.name);
                         },
                         child: const Text(
-                          'ดูทั้งหมด',
+                          "ดูทั้งหมด",
                           style: TextStyle(
-                              color: AppColors.orange,
-                              fontSize: AppFontSize.md,
-                              fontWeight: FontWeight.bold),
+                            color: Colors.green,
+                            fontSize: AppFontSize.md,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  const Expanded(child: CategoryList()),
+                  const Expanded(child: EarningCategoryList())
                 ],
               ),
             );

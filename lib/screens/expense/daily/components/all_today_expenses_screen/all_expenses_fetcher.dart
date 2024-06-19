@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
-import 'package:ininoutout_flutter/screens/expense/components/all_expenses_screen/all_expenses_list.dart';
-import 'package:ininoutout_flutter/screens/expense/components/all_expenses_screen/expense_search.dart';
+import 'package:ininoutout_flutter/screens/expense/components/all_today_expenses_screen/all_expenses_list.dart';
+import 'package:ininoutout_flutter/screens/expense/components/all_today_expenses_screen/expense_search.dart';
 import 'package:provider/provider.dart';
 
 class AllExpensesFetcher extends StatefulWidget {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ininoutout_flutter/core/components/home/earning_expense_weekly_chart.dart';
 import 'package:ininoutout_flutter/core/components/home/earning_total_chart.dart';
+import 'package:ininoutout_flutter/core/components/home/hero_status.dart';
 import 'package:ininoutout_flutter/core/components/home/total_chart.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
 import 'package:provider/provider.dart';
@@ -61,6 +62,10 @@ class _EarningExpenseFetcherState extends State<EarningExpenseFetcher> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    // SizedBox(
+                    //   height: 150.0,
+                    //   child: HeroStatus(),5
+                    // ),
                     SizedBox(
                       height: 250.0,
                       child: EarningExpenseWeeklyChart(),

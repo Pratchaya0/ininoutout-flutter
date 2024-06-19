@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
-import 'package:ininoutout_flutter/screens/expense/components/category_screen/category_card.dart';
+import 'package:ininoutout_flutter/screens/expense/components/today_category_screen/category_card.dart';
 import 'package:provider/provider.dart';
 
 class CategoryList extends StatelessWidget {
@@ -9,7 +9,7 @@ class CategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<DatabaseProvider>(builder: (_, db, __) {
-      var list = db.expenseCategories;
+      var list = db.getTodayExpenseCategory();
       return ListView.builder(
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),

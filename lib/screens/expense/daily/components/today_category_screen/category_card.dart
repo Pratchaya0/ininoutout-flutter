@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:ininoutout_flutter/core/models/earning/earning_category.dart';
-import 'package:ininoutout_flutter/screens/earning/earning_screen.dart';
+import 'package:ininoutout_flutter/core/models/expense/expense_category.dart';
+import 'package:ininoutout_flutter/core/models/expense/get_expense_category_type.dart';
+import 'package:ininoutout_flutter/screens/expense/expense_screen.dart';
 import 'package:intl/intl.dart';
 
-class EarningCategoryCard extends StatelessWidget {
-  final EarningCategory category;
-  const EarningCategoryCard({super.key, required this.category});
+class CategoryCard extends StatelessWidget {
+  final GetExpenseCategoryType category;
+  const CategoryCard({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
         Navigator.of(context).pushNamed(
-          EarningScreen.name,
+          ExpenseScreen.name,
           arguments: category.title,
         );
       },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ininoutout_flutter/core/constants/colors.dart';
 import 'package:ininoutout_flutter/core/constants/font_size.dart';
-import 'package:ininoutout_flutter/screens/earning/components/earning_category_screen/earning_category_fetcher.dart';
+import 'package:ininoutout_flutter/screens/earning/components/earning_today_category_screen/earning_category_fetcher.dart';
 import 'package:ininoutout_flutter/screens/earning/components/earning_form.dart';
 
 class EarningCategoryScreen extends StatelessWidget {
@@ -14,7 +14,7 @@ class EarningCategoryScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         title: const Text(
-          'รายรับ',
+          'รายรับวันนี้',
           style: TextStyle(
             color: Colors.black,
             fontSize: AppFontSize.h1,

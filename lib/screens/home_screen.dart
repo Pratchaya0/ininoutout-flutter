@@ -18,7 +18,6 @@ class HomeScreen extends StatelessWidget {
               child: EarningExpenseFetcher(),
             ),
             SizedBox(
-              height: 100,
               child: InOutButton(),
             ),
           ],

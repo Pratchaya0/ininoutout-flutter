@@ -16,8 +16,13 @@ class _EarningTotalChartState extends State<EarningTotalChart> {
   @override
   Widget build(BuildContext context) {
     return Consumer<DatabaseProvider>(builder: (_, db, __) {
-      var list = db.earningCategories;
-      var total = db.calculateTotalEarning();
+      var list = db.getTodayEarningCategory();
+      var total = db.calculateTodayEarning();
+
+      for (var i in list) {
+        print(i.title);
+      }
+
       return Row(
         children: [
           Expanded(

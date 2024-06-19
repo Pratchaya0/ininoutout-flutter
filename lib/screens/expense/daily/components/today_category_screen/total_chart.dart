@@ -16,8 +16,8 @@ class _TotalChartState extends State<TotalChart> {
   @override
   Widget build(BuildContext context) {
     return Consumer<DatabaseProvider>(builder: (_, db, __) {
-      var list = db.expenseCategories;
-      var total = db.calculateTotalExpense();
+      var list = db.getTodayExpenseCategory();
+      var total = db.calculateTodayExpense();
       return Row(
         children: [
           Expanded(

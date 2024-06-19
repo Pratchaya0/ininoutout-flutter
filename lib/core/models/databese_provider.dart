@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:ininoutout_flutter/core/constants/icons.dart';
 import 'package:ininoutout_flutter/core/models/earning/earning.dart';
 import 'package:ininoutout_flutter/core/models/earning/earning_category.dart';
+import 'package:ininoutout_flutter/core/models/earning/get_earning_category_type.dart';
 import 'package:ininoutout_flutter/core/models/expense/expanse.dart';
 import 'package:ininoutout_flutter/core/models/expense/expense_category.dart';
+import 'package:ininoutout_flutter/core/models/expense/get_expense_category_type.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -216,6 +219,25 @@ class DatabaseProvider with ChangeNotifier {
             converted.length, (index) => Expense.fromString(converted[index]));
         _expenses = nList;
         return _expenses;
+      });
+    });
+  }
+
+  // Fetch Today Earning
+  Future<List<Earning>> fetchTodayEarning() async {
+    final db = await database;
+    final yesterday = DateFormat('yyyy-MM-dd')
+        .format(DateTime.now().subtract(Duration(days: 1)));
+
+    return await db.transaction((txn) async {
+      return await txn.rawQuery(
+          "SELECT * FROM Earning WHERE DATE(date) > DATE(?)",
+          [yesterday]).then((data) {
+        final converted = List<Map<String, dynamic>>.from(data);
+        List<Earning> nList = List.generate(
+            converted.length, (index) => Earning.fromString(converted[index]));
+        _earnings = nList;
+        return _earnings;
       });
     });
   }
@@ -475,7 +497,11 @@ class DatabaseProvider with ChangeNotifier {
       }
     }
 
-    return {'earningEntries': listEarning.length, 'expenseEntries': listEarning.length, 'maxY': max};
+    return {
+      'earningEntries': listEarning.length,
+      'expenseEntries': listEarning.length,
+      'maxY': max
+    };
   }
 
   //  Calculate weekly earning and expense
@@ -516,5 +542,131 @@ class DatabaseProvider with ChangeNotifier {
     return data;
   }
 
+  // ------------------ Daily Earning
+  List<GetEarningCategoryType> getTodayEarningCategory() {
+    List<Map<String, dynamic>> data = [];
+    final today = DateTime.now();
+    var earningData = _earnings
+        .where((element) =>
+            element.date.year == today.year &&
+            element.date.month == today.month &&
+            element.date.day == today.day)
+        .toList();
+
+    for (var i in _earningCategories) {
+      var findDataIndex =
+          data.indexWhere((element) => element['title'] == i.title);
+      if (findDataIndex != -1) {
+        continue;
+      } else {
+        data.add(
+          {'title': i.title, 'entries': 0, 'totalAmount': 0.0},
+        );
+      }
+    }
+
+    for (var j in earningData) {
+      var findDataIndex =
+          data.indexWhere((element) => element['title'] == j.category);
+      if (findDataIndex != -1) {
+        data[findDataIndex]['entries'] += 1;
+        data[findDataIndex]['totalAmount'] += j.amount;
+      }
+    }
+
+    print(data);
+
+    final converted = List<Map<String, dynamic>>.from(data);
+    List<GetEarningCategoryType> nList = List.generate(data.length,
+        (index) => GetEarningCategoryType.fromString(converted[index]));
+
+    return nList;
+  }
+
+  double calculateTodayEarning() {
+    double total = 0.0;
+    final today = DateTime.now();
+    var earningData = _earnings
+        .where((element) =>
+            element.date.year == today.year &&
+            element.date.month == today.month &&
+            element.date.day == today.day)
+        .toList();
+
+    for (var i in earningData) {
+      total += i.amount;
+    }
+
+    return total;
+  }
+
+  // ------------------ Daily Expense
+  List<GetExpenseCategoryType> getTodayExpenseCategory() {
+    List<Map<String, dynamic>> data = [];
+    final today = DateTime.now();
+    var expenseData = _expenses
+        .where((element) =>
+            element.date.year == today.year &&
+            element.date.month == today.month &&
+            element.date.day == today.day)
+        .toList();
+
+    for (var i in _expenseCategories) {
+      var findDataIndex =
+          data.indexWhere((element) => element['title'] == i.title);
+      if (findDataIndex != -1) {
+        continue;
+      } else {
+        data.add(
+          {'title': i.title, 'entries': 0, 'totalAmount': 0.0},
+        );
+      }
+    }
+
+    for (var j in expenseData) {
+      var findDataIndex =
+          data.indexWhere((element) => element['title'] == j.category);
+      if (findDataIndex != -1) {
+        data[findDataIndex]['entries'] += 1;
+        data[findDataIndex]['totalAmount'] += j.amount;
+      }
+    }
+
+    print(data);
+
+    final converted = List<Map<String, dynamic>>.from(data);
+    List<GetExpenseCategoryType> nList = List.generate(data.length,
+        (index) => GetExpenseCategoryType.fromString(converted[index]));
+
+    return nList;
+  }
+
+  double calculateTodayExpense() {
+    double total = 0.0;
+    final today = DateTime.now();
+    var expenseData = _expenses
+        .where((element) =>
+            element.date.year == today.year &&
+            element.date.month == today.month &&
+            element.date.day == today.day)
+        .toList();
+
+    for (var i in expenseData) {
+      total += i.amount;
+    }
+
+    return total;
+  }
+
   // =========================================================================================== END CHART DATA
+
+  // =========================================================================================== HERO STATUS
+  bool moneyStatus(double totalEarning, double totalExpense) {
+    if (totalEarning > totalExpense) {
+      return true;
+    }
+    return false;
+  }
+
+  // =========================================================================================== END HERO STATUS
 }

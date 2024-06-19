@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ininoutout_flutter/core/constants/colors.dart';
 import 'package:ininoutout_flutter/core/constants/font_size.dart';
-import 'package:ininoutout_flutter/screens/earning/components/earning_screen/earning_fetcher.dart';
+import 'package:ininoutout_flutter/screens/earning/daily/components/earning_screen/earning_fetcher.dart';
 
 class EarningScreen extends StatelessWidget {
-  static const name = '/earning/earning_screen';
+  static const name = '/earning/daily/earning_screen';
   const EarningScreen({super.key});
 
   @override

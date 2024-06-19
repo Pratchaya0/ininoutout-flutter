@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ininoutout_flutter/core/models/databese_provider.dart';
-import 'package:ininoutout_flutter/screens/earning/components/all_earning_screen/all_earning_list.dart';
-import 'package:ininoutout_flutter/screens/earning/components/all_earning_screen/earning_search.dart';
+import 'package:ininoutout_flutter/screens/earning/components/all_today_earning_screen/all_earning_list.dart';
+import 'package:ininoutout_flutter/screens/earning/components/all_today_earning_screen/earning_search.dart';
 import 'package:provider/provider.dart';
 
 class AllEarningFetcher extends StatefulWidget {
